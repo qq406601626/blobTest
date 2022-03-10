@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+<script>
+    // ArrayBuffer是一(大)块内存，但不能直接访问ArrayBuffer里面的字节。
+    // 为了达到最大的灵活性和效率，JavaScript 类型数组（Typed Arrays）将实现拆分为缓冲和视图两部分。
+    // 一个缓冲（由 ArrayBuffer 对象实现）描述的是一个数据块。
+    // 你不能直接操纵一个ArrayBuffer中的内容；你需要创建一个类型化数组的视图或一个描述缓冲数据格式的DataView，使用它们来读写缓冲区中的内容.
+
+    // new ArrayBuffer(length)
+    // length:字节长度
+    // 下面的例子创建了一个 8 字节的缓冲区，并使用一个 Int32Array 来引用它。
+    // 1、创建一个16字节长度的缓冲区。
+    const buffer = new ArrayBuffer(16);
+    // 2、 创建一个32位有符号整数数组的视图。
+    const int32View = new Int32Array(buffer);
+    // 3、 像普通数组一样访问该数组中的元素。
+    // 循环将遍历4次：一个字节为8位，32位类型数组每个元素为32位（即每个元素占四(32/8)个字节：），所以16字节的buffer转为32位数组的数组长度为4
+    for (const i = 0; i < int32View.length; i++) {
+        int32View[i] = i * 2;
+    }
+
+    // TypeArray：可以理解为视图，底层为ArrayBuffer。
+    // Int8Array:
+    // Int16Array：表示16位有符号整数数组
+
+</script>
+</html>
