@@ -28,7 +28,7 @@
     const int32View = new Int32Array(buffer);
     // 3、 像普通数组一样访问该数组中的元素。
     // 循环将遍历4次：一个字节为8位，32位类型数组每个元素为32位（即每个元素占四(32/8)个字节：），所以16字节的buffer转为32位数组的数组长度为4
-    for (const i = 0; i < int32View.length; i++) {
+    for (let i = 0; i < int32View.length; i++) {
         int32View[i] = i * 2;
     }
 
