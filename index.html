@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+<input type="file" id="file" onchange="handlerChange">
+<img src="" id="img">
+</body>
+<script>
+    window.file.onchange = (e) => {
+        // const file = e.target.files[0]
+        // const blob = new Blob([file], {type: 'image/jpeg'})
+        // blob可以理解为磁盘上不可变文件的#数据包#。
+        // 这个数据包也可以通过ArrayBuffer、 ArrayBufferView、 Blob,、DOMString等对象构成的数组。
+        // file和blob都只是一个对象，不能用于图片的src。必须把blob转为createObjectURL地址。
+        // 临时创建的数据，转化为blob后依然可以转为createObjectURL地址：
+        const tempBlob = new Blob([JSON.stringify({ name: 'test',})], {type: 'application/json'})
+        const blobUrl = window.URL.createObjectURL(tempBlob)
+    }
+</script>
+</html>
