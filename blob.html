@@ -23,6 +23,7 @@
         // 这个数据包也可以通过ArrayBuffer、 ArrayBufferView、 Blob,、DOMString等对象构成的数组。
         // file和blob都只是一个对象，不能用于图片的src。必须把blob转为createObjectURL地址。
         // 临时创建的数据，转化为blob后依然可以转为createObjectURL地址：
+        // blob:ArrayBuffer、ArrayBufferView、其它Blob、DOMString
         const tempBlob = new Blob([JSON.stringify({ name: 'test',})], {type: 'application/json'})
         const blobUrl = window.URL.createObjectURL(tempBlob)
     }
