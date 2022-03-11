@@ -33,8 +33,13 @@
     }
 
     // TypeArray：可以理解为视图，底层为ArrayBuffer。
+    // TypeArray中只能存储数字（即字符串的二进制码:str.charCodeAt(index)）
     // Int8Array: 表示8位整数数组;参数：(length | typedArray | object | buffer [, byteOffset [, length]])
+    // 其中参数length是视图的字节数。缓存区的大小（byteLength 属性的值）为length * 每个元素（即array[0]、array[1]...）的字节数。
     // Int16Array：表示16位有符号整数数组;参数：(length | typedArray | object | buffer [, byteOffset [, length]])
+    // 其中参数length是视图的字节数。缓存区的大小（byteLength 属性的值）为length * 每个元素（即array[0]、array[1]...）的字节数。
+
+
 
 </script>
 </html>
