@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">click</button>
+</body>
+<script>
+    const base64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAtCAYAAADRLVmZAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAARqSURBVHjazJl/iBVVFMc/77Vrava0Wv9o3cQfZGi7RJqboLT+USD6R0KrmNI/vSFhpdy2EHIrKpRAw35CbFxisZCwiFpYie2PVvMPlfARWLBIZmbrZlhbq+mutq8/3pmaTnfmzczO7NsDl+Gee358Z+65954zN1PM50mYaoE3gDXS7waeAPqt0sbEclKVMOgbgC+ABR7eQ0ADsAS4mJSjbMLAtyvQLi0AnknSUZLAZwNtAeNtIjPhgL8MTPb0L0tzabLITCjgjcBGxdsN7FK8jSI7IYBngD2K1y+gd1t2kz2iU3HgzcByxWsHLklrV2PLRaeiwK+3hEMB2Ovp7xWel3aJbsWAbwXmWHaPUU9/1LLbzBHdigCfaQmDT4Fei2yvjOlwmlkJ4C8COU//KrAtQH6byLiUExvxdoSQucp1QL1sZY3AMuBOtTu8BjxZxs6rQKunXwS+AY4Ax6SdwJi/4gKvE3CNwL3APcDUADu/AfPlGUQ3Ad/J04/+BL4CjsqLHMGYs37AbwQeBVYK0Fsjztxm4J2Qso8BHRHtn5MX6QXexZihTDGfrwUOA3NjhNqvwAvAmxH1Hhe9m2P4/B5YkSnm8x9GOBD6ZPrcaSwA12Kuryrgbs+aWQrcEVL3o0wxn7/icxj88k+M/btwBpOuOv5TSDjODLUBNPpsmcNVQLViHgM2yJSMLxkzCPRIc19mLvCBSs6qs8AhS6a3lolDay0Z5aEs8JTKm90Mbn3FITvOekvmeRloywLHJTRGlcD7QFMFQTcJBlTeswFjCu6R3wW0KKFq4ddXAHS9+NbrrwVjunSu0gHsUII54DM5SccLdJ34zKmRHRjT4ZdkPQ90Kt4s4AAwfRxATxdfs9RIp2DzzQ6Lcnz3KH4D8AkwKUXQk8RHgxrpATZjTLFcWjsiJ6muWlZaZiNJ6hQfuppqxpiRsPn4ELAaOK34DydRL1q+drPY9tJpYDXGDEUtJAaAVcAFxX8wha+tbV4AVmHMQNwKqA/YqXhTUwCube7EmL6xlm466T+fAvDzZXzGAq63ph9TAK5t1qYB/KcUgJ9R/WlJAK+z/F5Lmj4Hfvf0u5IArqftbAp5+M/AXZRuLu7HmH1hyqcgmmJZKGFCpVrKMvcQuRoC/A9RatdsxDC5BPwRIF8DPCfhdFRav/BqkpykbEJhMg94SxbZSwpkjfDOiMy8MqfotDSA6zBZCuwHTgJbJLSCwm6LyO4XXS/gW3Cc48AQjvMljpMbC/DZFuAZSleBB6WwXudjpyjN5nOd6B7EcdbgOBn5UeSuixX8/4Yj0uLUX/x24ASwKEBnBHgPeEX6TwOP+KTE90n71rJ2Fo4FuM4hlgXIDgJvU7qc9SZHDvCs/L1qAWZYdBeF8B0pVL4Oeeq1ArdRuucc8Mk020Wm1XJSRvZdDngncMpnrABsovSX9nXC3RpfFNn5olvwkTtVrmjJhnDUBHwMDEv8dgMPAIuBfcT7d3hNdBeLrW6xPSy+mjAm8EP8PQBk5hC1rqoFkwAAAABJRU5ErkJggg=='
+    window.btn.onclick = () => {
+        const decodeBase64 = window.atob(base64.split(',')[1])
+        const uInt8Array = new Uint8Array(decodeBase64.length)
+        uInt8Array.forEach((v, index) => {
+            uInt8Array[index] = decodeBase64.charCodeAt(index)
+        })
+        const blob = new Blob([uInt8Array], {type: 'image/jpeg'})
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.download = 'test'
+        a.href = url
+        a.click()
+    }
+</script>
+</html>
